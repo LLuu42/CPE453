@@ -1,0 +1,13 @@
+CPE 453 Program 1
+Dr. Zachary Peterson
+25 April 2017
+
+Author: Lara Luu (ljluu)
+
+“How is this LWP library different from a real thread management library? Name two ways in which this LWP library API could be improved.”
+
+This LWP library does not have any method to ensure mutual exclusivness between threads. In addition, this library does nothing to ensure locking of threads during critical sections. In addition, our processing library uses a very simple "Round Robin" method of thread scheduling, which may not be the best case depending on individual thread priorities. 
+
+
+
+
