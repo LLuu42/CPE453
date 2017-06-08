@@ -1,0 +1,7 @@
+usage:
+
+python memSim.py -f <FRAME_COUNT> -p <PRA>
+
+defaults: 
+-f: 256
+-p: FIFO

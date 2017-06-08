@@ -83,7 +83,7 @@ class OPTCache:
         self.cache[key] = value
 
     def pop_opt(self):
-        for v in victims:
+        for v in self.victims:
             c = self.cache.get(v[0])
             if c is None:
                 continue
@@ -128,7 +128,7 @@ class OPTCache:
         # 112 2 5
         # 156 2 4
         # 209 2 3
-        # 91 4 18
+        # 91 4 
 
 class VirtualMemory:
     # return (page_number,frame) with the help of page
@@ -172,7 +172,7 @@ class VirtualMemory:
         page_number, offset = mask_logical_adress(logical_adress)
         page = self.page_table_get(page_number)
         byte_referenced = get_byte_value(page.frame, offset)
-        self.print_adress(logical_adress, byte_referenced, page.page_number, page.frame)
+        self.print_adress(logical_adress, byte_r eferenced, page.page_number, page.frame)
 
     def print_adress(self, adress, value, frame_number, entire_frame):
         print("{0}, {1}, {2}, {3}").format(adress, value, frame_number, entire_frame.encode("hex").upper())
@@ -262,8 +262,8 @@ def main():
     # Args for infile, framesize, page-replacement algorithm
     parser = argparse.ArgumentParser(description="Virtual Memory Simulator")
     parser.add_argument("rsf", metavar="RSF", type=argparse.FileType(), help="Reference sequence file")
-    parser.add_argument("--frames", metavar="F", type=int, default=256, help="Number of frames in main memory")
-    parser.add_argument("--pra", metavar="PRA", type=str, default="FIFO", help="Page replacement algorithm")
+    parser.add_argument("frames", metavar="F", type=int, default=256, help="Number of frames in main memory")
+    parser.add_argument("pra", metavar="PRA", type=str, default="FIFO", help="Page replacement algorithm")
 
     args = vars(parser.parse_args())
     input_adresses, num_frames, replacement_algorithm = parse_args(args)
